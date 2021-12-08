@@ -9,6 +9,28 @@ namespace Person编辑.ViewModel
 {
     public class PlaceOrderViewModel : BindableBase
     {
+        public event Action Done = delegate { };
+
+        public PlaceOrderViewModel()
+        {
+            CancelCommand = new RelayCommand(OnCancel);
+            SaveCommand = new RelayCommand(OnSave, CanSave);
+        }
+
+        private async void OnSave(object obj)
+        {
+            Done();
+        }
+
+        private bool CanSave(object arg)
+        {
+            return true;
+        }
+
+        private void OnCancel(object obj)
+        {
+            Done();
+        }
 
         private bool _EditMode;
         public bool EditMode
@@ -24,7 +46,8 @@ namespace Person编辑.ViewModel
             set { SetProperty(ref _Customer, value); }
         }
 
-
+        public RelayCommand CancelCommand { get; set; }
+        public RelayCommand SaveCommand { get; set; }
         private Customer _editngCustomer = null;
 
        public void SetCustomer(Customer cust)

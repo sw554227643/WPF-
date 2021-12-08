@@ -32,7 +32,7 @@ namespace Person编辑.ViewModel
         {
             for (int i = 0; i < 5; i++)
             {
-                Customers.Add(new Customer() { Name = "name" + i });
+                Customers.Add(new Customer() { Name = "name" + i, Email= $"5542276{i}3@qq.com" , Phone=$"{i}8671235967"});
             }
         }
 

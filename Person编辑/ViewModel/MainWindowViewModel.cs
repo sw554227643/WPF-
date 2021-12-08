@@ -18,10 +18,18 @@ namespace Person编辑.ViewModel
             CurrentCommand = new RelayCommand(Current);
             _customerListViewModel.PlaceOrderRequested += NavToOrder;
             _customerListViewModel.NavgateEditOrder += NavToEdit;
+            _placeOrderViewModel.Done += NavToCustomerList;
+        }
+
+        private void NavToCustomerList()
+        {
+            CurrentViewModel = _customerListViewModel;
         }
 
         private void NavToEdit(Customer obj)
         {
+            _placeOrderViewModel.EditMode = true;
+            _placeOrderViewModel.SetCustomer(obj);
             CurrentViewModel = _placeOrderViewModel;
         }
 

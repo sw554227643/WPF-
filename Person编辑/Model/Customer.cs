@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Person编辑.Model
 {
-    public class Customer : BindableBase
+    public class Customer : ValidatableBindableBase
     {
         private Guid _Id;
         public Guid Id
@@ -14,7 +14,7 @@ namespace Person编辑.Model
             get { return _Id; }
             set { SetProperty(ref _Id, value); }
         }
-
+        
         private string _Name;
         public string Name
         {
